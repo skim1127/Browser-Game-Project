@@ -11,15 +11,18 @@ Event listener for whenever user clicks on Cookie image.
     Display number of cookies gained on every click. ex: +1
 
 Cookie count trackers,
+    
     Cookies owned currently:
     Total cookies made:
     passive cookies gained per second:
 
 event listeners for upgrades done by the user
+    
     update cookies per second
     update cookies per click
 
 Announcements for achievements
+    
     based on total cookies made, display announcement that your cookies are becoming more famous
 
 
