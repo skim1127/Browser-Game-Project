@@ -9,24 +9,38 @@ Program start(load webpage)
 Event listener for whenever user clicks on Cookie image.
     
     Display number of cookies gained on every click. ex: +1
+    
+    Update cookies count
 
 Cookie count trackers,
     
-    Cookies owned currently:
     Total cookies made:
+    
+    Cookies owned currently:
+    - (total cookies made - cookies spent on upgrades)
     passive cookies gained per second:
+    - upgrade A + upgrade B + ...
 
 event listeners for upgrades done by the user
     
-    update cookies per second
-    update cookies per click
+    Upgrading passive income
+    - update cookies per second
+    - add image corresponding to the upgrade
+    
+    Upgrading click power
+    - update cookies per click
 
 Announcements for achievements
     
     based on total cookies made, display announcement that your cookies are becoming more famous
 
+    At a certain point(ex: total cookies made = 10million), Make announcement that your cookies are known worldwide and you are victorious
+
 
 Store data on Local Storage
+
+    update local storage data every few seconds.
+    Add a button to wipe save state.(delete data from local storage)
 
 ### MVP Criteria
 
@@ -56,7 +70,7 @@ Store data on Local Storage
 | ---- | ----- |
 | Sun. 01/23 | Create GitHub repository. Complete README.md. |
 
-| Tue. 01/25 | Create basic HTML layout. Have the cookie counter working, with minimum 1 passive cookie income working. Have re-naming functionality|
+| Tue. 01/25 | Create basic HTML layout. Have the cookie counter working, with minimum 1 passive cookie income working. Have re-naming functionality |
 
 | Thu. 01/27 | Save data in local storage, have all upgrades working, have button to wipe save state. Add victory condition |
 
