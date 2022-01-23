@@ -69,15 +69,10 @@ Store data on Local Storage
 | Date | Goals |
 | ---- | ----- |
 | Sun. 01/23 | Create GitHub repository. Complete README.md. |
-
 | Tue. 01/25 | Create basic HTML layout. Have the cookie counter working, with minimum 1 passive cookie income working. Have re-naming functionality |
-
-| Thu. 01/27 | Save data in local storage, have all upgrades working, have button to wipe save state. Add victory condition |
-
+| Thu. 01/27 | Save data in local storage, have all upgrades working, have button to wipe save state, Add victory condition |
 | Sun. 01/30 | Upload necessary images. Add/remove images based on upgrades. Add CSS styling|
-
 | Tue. 02/01 | Play test for any bugs, add any post MVP plans |
-
 | Thu. 02/03 | Deploy to GitHub Pages. Submit completed project. Project presentations. |
 
 
