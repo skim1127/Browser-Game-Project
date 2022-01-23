@@ -7,6 +7,7 @@ My Browser game is a cookie clicker. It is a simple game where you click on a co
 Program start(load webpage)
 
 Event listener for whenever user clicks on Cookie image.
+    
     Display number of cookies gained on every click. ex: +1
 
 Cookie count trackers,
