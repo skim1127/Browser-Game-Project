@@ -3,6 +3,25 @@
     cursor: pointer;
 }
 
+#cc-img:hover {
+    animation-name: cookie;
+    animation-duration: 0.45s;
+    animation-fill-mode: forwards;
+}
+
+/* .cc-animation {
+    animation-name: click;
+    animation-duration: 0.4s;
+} */
+
 #bakery-name {
     cursor: pointer;
+}
+
+@keyframes cookie {
+    0% {height: 200px;}
+    25% {height: 205px;}
+    50% {height: 200px;}
+    75% {height: 202px;}
+    100% {height: 200px;}
 }
