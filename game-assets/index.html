@@ -5,7 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie Clicker Project</title>
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- custom font embed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moo+Lah+Lah&display=swap" rel="stylesheet">
+    <!-- CSS sheet -->
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -13,16 +19,25 @@
         <h1>Cookie Clicker</h1>
         <div id="game-container">
             <!-- Modals -->
+                <!-- Upgrade Modal -->
             <div id="upgrade-modal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <p>You don't have enough cookies!</p>
                 </div>
             </div>
+                <!-- Progress Modal -->
+            <div id="progress-modal" class="modal">
+                <div class="modal-content">
+                    <!-- <span class="close">&times;</span> -->
+                    <p id="pm-content"></p>
+                </div>
+            </div>
+                <!-- Name Change Modal -->
             <div id="bakery-container">
-                <!-- name change modal trigger button -->
+                <!-- modal trigger button -->
                 <button id="bakery-btn">Change Name</button>
-                <!-- the Modal -->
+                <!-- Modal container -->
                 <div id="bakery-modal" class="modal">
                     <div class="modal-content">
                         <span class="close">&times;</span>
@@ -34,12 +49,14 @@
                     My Bakery
                 </h2>
             </div>
-            <img src="./Images/cookie.png" alt="img of chocolate chip cookie" id="cc-img">
-
+            <!-- Cookie image container -->
+            <div id="cc-img-container">
+                <img src="./Images/cookie.png" alt="img of chocolate chip cookie" id="cc-img">
+            </div>
             <!-- Cookie Clicker Counters -->
-            <h3 id="cookies-container">0 cookies</h3>
-            <h3 id="cps-container"></h3>
-            <h3 id="total-container">0 cookies baked total</h3>
+            <h3 class="counter" id="cookies-container">0 cookies</h3>
+            <h3 class="counter" id="cps-container"></h3>
+            <h3 class="counter" id="total-container">0 cookies baked total</h3>
 
             <!-- List of Upgrades -->
             <ul id="upgrades">
@@ -79,8 +96,46 @@
                     <label for="p3-upgrade" id="p3-upgrade-desc"></label>
                     <img src="./Images/cookie-icon.png" alt="drawing of chocolate chip cookie" id="cc-icon">
                 </li>
+                <li>
+                    <button class="upgrade-btn" id="p4-upgrade" title="3d printers to quickly print out cookies. generates 300 cookies per second">
+                        <img src="./Images/3d-printer.png" alt="image of a 3d printer" class="upgrade-icon">
+                        3D Cookie Printer
+                    </button>
+                    <label for="p4-upgrade" id="p4-upgrade-desc"></label>
+                    <img src="./Images/cookie-icon.png" alt="drawing of chocolate chip cookie" id="cc-icon">
+                </li>
+                <li>
+                    <button class="upgrade-btn" id="p5-upgrade" title="a robot that specializes in making cookies. generates 1500 cookies per second">
+                        <img src="./Images/robot.png" alt="image of a robot" class="upgrade-icon">
+                        C00K13-BOT
+                    </button>
+                    <label for="p5-upgrade" id="p5-upgrade-desc"></label>
+                    <img src="./Images/cookie-icon.png" alt="drawing of chocolate chip cookie" id="cc-icon">
+                </li>
             </ul>
         </div>
+        <section id="side-bar">
+            <h3>
+                Upgrades
+            </h3>
+            <div id="upgrade-container">
+                <div class="upgrade-row" id="row1">
+                    <h3 class="upgrade-text" id="row1-text"></h3>
+                </div>
+                <div class="upgrade-row" id="row2">
+                    <h3 class="upgrade-text" id="row2-text"></h3>
+                </div>
+                <div class="upgrade-row" id="row3">
+                    <h3 class="upgrade-text" id="row3-text"></h3>
+                </div>
+                <div class="upgrade-row" id="row4">
+                    <h3 class="upgrade-text" id="row4-text"></h3>
+                </div>
+                <div class="upgrade-row" id="row5">
+                    <h3 class="upgrade-text" id="row5-text"></h3>
+                </div>
+            </div>
+        </section>
     </div>
     <script src="./script.js"></script>
 </body>

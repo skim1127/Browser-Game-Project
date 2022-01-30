@@ -1,10 +1,14 @@
 // Modals object
+
+// **Fix modals close btn**
 var modals = {
     // grab tags from html
     bakeryModal: document.getElementById("bakery-modal"),
     upgradeModal: document.getElementById("upgrade-modal"),
+    progressModal: document.getElementById("progress-modal"),
     bakeryBtn: document.getElementById("bakery-btn"),
     closeBtn: document.getElementsByClassName("close")[0],
+    pmContent: document.getElementById("pm-content"),
     
     // main modal function
     modalMain() {
@@ -15,6 +19,7 @@ var modals = {
         // close modal on button click
         modals.closeBtn.onclick = function() {
             modals.bakeryModal.style.display = "none";
+            modals.progressModal.style.display = "none";
             modals.upgradeModal.style.display = "none";
         }
         // close modal on clicking outside the modal
@@ -25,8 +30,19 @@ var modals = {
             if (event.target == modals.upgradeModal) {
                 modals.upgradeModal.style.display = "none";
             }
+            if (event.target == modals.progressModal) {
+                modals.progressModal.style.display = "none";
+            }
         }
-    }
+    },
+
+    // progress modal display messages
+    prog1: "Your neighbors love your cookies!",
+    prog2: "Your cookies are becoming famous within the neighborhood.",
+    prog3: "People are visiting from neighboring towns to taste your cookies.",
+    prog4: "Your bakery now has multiple locations across the state.",
+    prog5: "Your cookies can now be found in any supermarket or convenience store in the country!",
+    prog6: "You are now a celebrity and people are asking for your signature on their cookies.",
 }
 
 // Cookie clicker object
@@ -39,10 +55,23 @@ var cookieClicker = {
     count: 0,
     total: 0,
     cps: 0,
-    progress: [true, true, true],
-    // **Add variable to store amount of cookies spent on upgrades.
-    // **Add variable to combine cookies owned + cookies spent for total cookies baked
-    // **Add variable for cookies per second. add value whenever passive is upgraded
+    // upgrade counter
+    p1Count: 0,
+    p1Cps: 0,
+
+    p2Count: 0,
+    p2Cps: 0,
+
+    p3Count: 0,
+    p3Cps: 0,
+
+    p4Count: 0,
+    p4Cps: 0,
+
+    p5Count: 0,
+    p5Cps: 0,
+
+    progress: [true, true, true, true, true, true],
 
     main() {
         var bakery = document.getElementById("bakery-name")
@@ -107,6 +136,9 @@ var cookieClicker = {
             // get tags
             var p1Upgrade = document.getElementById("p1-upgrade")
             var p1UpgradeDesc = document.getElementById("p1-upgrade-desc")
+            // upgrade counter tags
+            var p1Container = document.getElementById("row1")
+            var p1Text = document.getElementById("row1-text")
 
             // set base upgrade cost
             var p1Cost = 20
@@ -132,13 +164,28 @@ var cookieClicker = {
                 } else {
                     // remove cookies for upgrade, update text
                     cookieClicker.count = cookieClicker.count - p1Cost
+                    cookieClicker.p1Count = cookieClicker.p1Count + 1
                     cookieClicker.countContainer.textContent = cookieClicker.count + " cookies"
                     // update cps, update cps text
                     cookieClicker.cps = cookieClicker.cps + 1
+                    cookieClicker.p1Cps = cookieClicker.p1Cps + 1
                     cookieClicker.cpsContainer.textContent = cookieClicker.cps + " per second"
                     // increase upgrade cost, update text
                     p1Cost = p1Cost + 20
                     p1UpgradeDesc.textContent = "-" + p1Cost
+                    // update side bar text
+                    if(cookieClicker.p1Cps == 1) {
+                        p1Text.textContent = "Generating " + cookieClicker.p1Cps + " cookie per second"
+                    } else {
+                        p1Text.textContent = "Generating " + cookieClicker.p1Cps + " cookies per second"
+                    }
+                    // create upgrade image elements
+                    let p1img = document.createElement("img");
+                    p1img.src = "./Images/cursor.png"
+                    p1img.style.margin = "2px"
+                    p1img.style.height = "14px"
+                    // add image to upgrade container
+                    p1Container.appendChild(p1img)
                     // call interval function
                     p1Clicker()
                 }
@@ -148,6 +195,9 @@ var cookieClicker = {
             // get tags
             var p2Upgrade = document.getElementById("p2-upgrade")
             var p2UpgradeDesc = document.getElementById("p2-upgrade-desc")
+            // upgrade counter tags
+            var p2Container = document.getElementById("row2")
+            var p2Text = document.getElementById("row2-text")
 
             // set base upgrade cost
             var p2Cost = 100 //*change value later*
@@ -172,13 +222,24 @@ var cookieClicker = {
                 } else {
                     // remove cookies for upgrade, update text
                     cookieClicker.count = cookieClicker.count - p2Cost
+                    cookieClicker.p2Count = cookieClicker.p2Count + 1
                     cookieClicker.countContainer.textContent = cookieClicker.count + " cookies"
                     // update cps, update cps text
                     cookieClicker.cps = cookieClicker.cps + 8
+                    cookieClicker.p2Cps = cookieClicker.p2Cps + 8
                     cookieClicker.cpsContainer.textContent = cookieClicker.cps + " per second"
                     // increase upgrade cost, update text
                     p2Cost = parseInt(p2Cost * 1.15)
                     p2UpgradeDesc.textContent = "-" + p2Cost
+                    // update sidebar text
+                    p2Text.textContent = "Generating " + cookieClicker.p2Cps + " cookies per second"
+                    // create upgrade image elements
+                    let p2img = document.createElement("img")
+                    p2img.src = "./Images/chocolate.png"
+                    p2img.style.margin = "2px"
+                    p2img.style.height = "14px"
+                    // append image to container
+                    p2Container.appendChild(p2img)
                     // call interval function
                     p2Clicker()
                 }
@@ -188,6 +249,9 @@ var cookieClicker = {
             // get tags
             var p3Upgrade = document.getElementById("p3-upgrade")
             var p3UpgradeDesc = document.getElementById("p3-upgrade-desc")
+            // upgrade counter tags
+            var p3Container = document.getElementById("row3")
+            var p3Text = document.getElementById("row3-text")
 
             // set base upgrade cost
             var p3Cost = 1000 //*change value later*
@@ -213,17 +277,138 @@ var cookieClicker = {
                 } else {
                     // remove cookies for upgrade, update text
                     cookieClicker.count = cookieClicker.count - p3Cost
+                    cookieClicker.p3Count = cookieClicker.p3Count + 1
                     cookieClicker.countContainer.textContent = cookieClicker.count + " cookies"
                     // update cps, update cps text
                     cookieClicker.cps = cookieClicker.cps + 50
+                    cookieClicker.p3Cps = cookieClicker.p3Cps + 50
                     cookieClicker.cpsContainer.textContent = cookieClicker.cps + " per second"
                     // increase update cost, update text
                     p3Cost = parseInt(p3Cost * 1.15)
                     p3UpgradeDesc.textContent = "-" + p3Cost
+                    // update p3Cps text
+                    p3Text.textContent = "Generating " + cookieClicker.p3Cps + " cookies per second"
+                    // create image elements
+                    let p3img = document.createElement("img")
+                    p3img.src = "./Images/oven-icon.png"
+                    p3img.style.margin = "2px"
+                    p3img.style.height = "14px"
+                    // append image
+                    p3Container.appendChild(p3img)
                     // call interval function
                     p3Clicker()
                 }
             })
+
+            // *** 3D Printer Upgrade***
+            // get tags
+            var p4Upgrade = document.getElementById("p4-upgrade")
+            var p4UpgradeDesc = document.getElementById("p4-upgrade-desc")
+            // get upgrade count tags
+            var p4Container = document.getElementById("row4")
+            var p4Text = document.getElementById("row4-text")
+            
+            // set base upgrade cost
+            var p4Cost = 6500 //change value later
+            // set text for upgrade cost
+            p4UpgradeDesc.textContent = "-" + p4Cost
+
+            // interval function
+            function p4Clicker() {
+                setInterval(function() {
+                    cookieClicker.count = cookieClicker.count + 3
+                    cookieClicker.total = cookieClicker.total + 3
+                    cookieClicker.countContainer.textContent = cookieClicker.count + " cookies"
+                    cookieClicker.totalContainer.textContent = cookieClicker.total + " cookies baked total"
+                }, 10);
+            }
+
+            // p4 upgrade event listener
+            p4Upgrade.addEventListener("click", function() {
+
+                // check if user has enough cookies
+                if (cookieClicker.count < p4Cost) {
+                    modals.upgradeModal.style.display = "block";
+                } else {
+                    // remove cookies for upgrade, update text
+                    cookieClicker.count = cookieClicker.count - p4Cost
+                    cookieClicker.p4Count = cookieClicker.p4Count + 1
+                    cookieClicker.countContainer.textContent = cookieClicker.count + " cookies"
+                    // update cps, update cps text
+                    cookieClicker.cps = cookieClicker.cps + 300
+                    cookieClicker.p4Cps = cookieClicker.p4Cps + 300
+                    cookieClicker.cpsContainer.textContent = cookieClicker.cps + " per second"
+                    // increase update cost, update text
+                    p4Cost = parseInt(p4Cost * 1.15)
+                    p4UpgradeDesc.textContent = "-" + p4Cost
+                    // update p4Cps text
+                    p4Text.textContent = "Generating " + cookieClicker.p4Cps + " cookies per second"
+                    // create image elements
+                    let p4img = document.createElement("img")
+                    p4img.src = "./Images/3d-printer.png"
+                    p4img.style.margin = "2px"
+                    p4img.style.height = "14px"
+                    // append image
+                    p4Container.appendChild(p4img)
+                    // call interval function
+                    p4Clicker()
+                }
+            })
+
+            // ***Cookie Bot Upgrade***
+            // get tags
+            var p5Upgrade = document.getElementById("p5-upgrade")
+            var p5UpgradeDesc = document.getElementById("p5-upgrade-desc")
+            // get upgrade count tags
+            var p5Container = document.getElementById("row5")
+            var p5Text = document.getElementById("row5-text")
+            
+            // set base upgrade cost
+            var p5Cost = 33000 //change value later
+            // set text for upgrade cost
+            p5UpgradeDesc.textContent = "-" + p5Cost
+            
+            // interval function
+            function p5Clicker() {
+                setInterval(function() {
+                    cookieClicker.count = cookieClicker.count + 15
+                    cookieClicker.total = cookieClicker.total + 15
+                    cookieClicker.countContainer.textContent = cookieClicker.count + " cookies"
+                    cookieClicker.totalContainer.textContent = cookieClicker.total + " cookies baked total"
+                }, 10);
+            }  
+
+            // p5 upgrade event listener
+            p5Upgrade.addEventListener("click", function() {
+
+                // check if user has enough cookies
+                if (cookieClicker.count < p5Cost) {
+                    modals.upgradeModal.style.display = "block";
+                } else {
+                    // remove cookies for upgrade, update text
+                    cookieClicker.count = cookieClicker.count - p5Cost
+                    cookieClicker.p5Count = cookieClicker.p5Count + 1
+                    cookieClicker.countContainer.textContent = cookieClicker.count + " cookies"
+                    // update cps, update cps text
+                    cookieClicker.cps = cookieClicker.cps + 1500
+                    cookieClicker.p5Cps = cookieClicker.p5Cps + 1500
+                    cookieClicker.cpsContainer.textContent = cookieClicker.cps + " per second"
+                    // increase update cost, update text
+                    p5Cost = parseInt(p5Cost * 1.15)
+                    p5UpgradeDesc.textContent = "-" + p5Cost
+                    // update p5Cps text
+                    p5Text.textContent = "Generating " + cookieClicker.p5Cps + " cookies per second"
+                    // create image elements
+                    let p5img = document.createElement("img")
+                    p5img.src = "./Images/robot.png"
+                    p5img.style.margin = "2px"
+                    p5img.style.height = "14px"
+                    // append image
+                    p5Container.appendChild(p5img)
+                    // call interval function
+                    p5Clicker()
+                }
+            })                  
         }
         
 
@@ -235,16 +420,47 @@ var cookieClicker = {
 
 function statTracker() {
     setInterval(function() {
-        if (cookieClicker.total >= 10 && cookieClicker.progress[0] == true) {
-        alert("Your neighbors and their kids love your cookies!")
-        cookieClicker.progress[0] = false
+
+        // Progress 1
+        if (cookieClicker.total >= 100 && cookieClicker.progress[0] == true) {
+            // change text content, display achievement message
+            modals.pmContent.textContent = modals.prog1;
+            modals.progressModal.style.display = "block";
+            cookieClicker.progress[0] = false;
         } 
-        if(cookieClicker.total >= 100 && cookieClicker.progress[1] == true) {
-            alert("Your cookies are becoming famous within the neighborhood.")
-            cookieClicker.progress[1] = false
+        // Progress 2
+        if(cookieClicker.total >= 1000 && cookieClicker.progress[1] == true) {
+            modals.pmContent.textContent = modals.prog2;
+            modals.progressModal.style.display = "block";
+            cookieClicker.progress[1] = false;
+        }
+        // Progress 3
+        if(cookieClicker.total >= 10000 && cookieClicker.progress[2] == true){
+            modals.pmContent.textContent = modals.prog3;
+            modals.progressModal.style.display = "block";
+            cookieClicker.progress[2] = false;
+        }
+        // Progress 4
+        if(cookieClicker.total >= 100000 && cookieClicker.progress[3] == true){
+            modals.pmContent.textContent = modals.prog4;
+            modals.progressModal.style.display = "block";
+            cookieClicker.progress[3] = false;
+        }
+        // Progress 5
+        if(cookieClicker.total >= 1000000 && cookieClicker.progress[4] == true){
+            modals.pmContent.textContent = modals.prog5;
+            modals.progressModal.style.display = "block";
+            cookieClicker.progress[4] = false;
+        }
+        // Progress 6
+        if(cookieClicker.total >= 10000000 && cookieClicker.progress[5] == true){
+            modals.pmContent.textContent = modals.prog6;
+            modals.progressModal.style.display = "block";
+            cookieClicker.progress[5] = false;
         }
     }, 1000)
 }
-statTracker()
+
 cookieClicker.main()
 modals.modalMain()
+statTracker()
