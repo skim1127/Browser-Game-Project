@@ -46,6 +46,12 @@ h1 {
     border: 2px solid #888;
     width: 60%
 }
+    /* progress modal title */
+#pm-title {
+    color: rgb(26, 155, 26);
+    font-weight: bold;
+    text-align: center;
+}
     /* Close button */
 .close {
     color: #aaa;
