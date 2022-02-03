@@ -225,9 +225,9 @@ var cookieClicker = {
 
             // upgrade btn event listener
             p1Upgrade.addEventListener("click", function(){
-                if (cookieClicker.p1Count == 10) {
-                    console.log("Hello")
-                }
+                // if (cookieClicker.p1Count == 10) {
+                //     console.log("Hello")
+                // }
                 // check if user has enough cookies for upgrade
                 if (cookieClicker.count < p1Cost) {
                     modals.upgradeModal.style.display = "block";
