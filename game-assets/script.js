@@ -124,6 +124,7 @@ var cookieClicker = {
         var newName = document.getElementById("new-name")
         var submitName = document.getElementById("submit-name")
         submitName.addEventListener("click", async function() {
+            upgradeSound.play()
             await changeName(newName.value)
             modals.bakeryModal.style.display = "none";
         })
@@ -189,12 +190,7 @@ var cookieClicker = {
                     modals.upgradeModal.style.display = "block";
                 } else {
                     // Play Sound 
-                    if (upgradeSound.sound.currentTime > 0) {
-                        var upgradeSound2 = new sound("./Sounds/box-check.wav")
-                        upgradeSound2.play()
-                    } else {
-                        upgradeSound.play()
-                    }
+                    upgradeSound.play()
                     // Update cookie count, update upgrade cost, update click power, update text
                     cookieClicker.count = cookieClicker.count - c1Cost
                     cookieClicker.countContainer.textContent = cookieClicker.count + " cookies"
@@ -237,12 +233,7 @@ var cookieClicker = {
                     modals.upgradeModal.style.display = "block";
                 } else {
                     // Play Sound 
-                    if (upgradeSound.sound.currentTime > 0) {
-                        var upgradeSound2 = new sound("./Sounds/box-check.wav")
-                        upgradeSound2.play()
-                    } else {
-                        upgradeSound.play()
-                    }
+                    upgradeSound.play()
                     // remove cookies for upgrade, update text
                     cookieClicker.count = cookieClicker.count - p1Cost
                     cookieClicker.p1Count = cookieClicker.p1Count + 1
@@ -302,12 +293,7 @@ var cookieClicker = {
                     modals.upgradeModal.style.display = "block";
                 } else {
                     // Play Sound 
-                    if (upgradeSound.sound.currentTime > 0) {
-                        var upgradeSound2 = new sound("./Sounds/box-check.wav")
-                        upgradeSound2.play()
-                    } else {
-                        upgradeSound.play()
-                    }
+                    upgradeSound.play()
                     // remove cookies for upgrade, update text
                     cookieClicker.count = cookieClicker.count - p2Cost
                     cookieClicker.p2Count = cookieClicker.p2Count + 1
@@ -364,12 +350,7 @@ var cookieClicker = {
                     modals.upgradeModal.style.display = "block";
                 } else {
                     // Play Sound 
-                    if (upgradeSound.sound.currentTime > 0) {
-                        var upgradeSound2 = new sound("./Sounds/box-check.wav")
-                        upgradeSound2.play()
-                    } else {
-                        upgradeSound.play()
-                    }
+                    upgradeSound.play()
                     // remove cookies for upgrade, update text
                     cookieClicker.count = cookieClicker.count - p3Cost
                     cookieClicker.p3Count = cookieClicker.p3Count + 1
@@ -404,7 +385,7 @@ var cookieClicker = {
             var p4Text = document.getElementById("row4-text")
             
             // set base upgrade cost
-            var p4Cost = 10 //change value later
+            var p4Cost = 1 //change value later
             // set text for upgrade cost
             p4UpgradeDesc.textContent = "-" + p4Cost
 
@@ -426,12 +407,7 @@ var cookieClicker = {
                     modals.upgradeModal.style.display = "block";
                 } else {
                     // Play Sound 
-                    if (upgradeSound.sound.currentTime > 0) {
-                        var upgradeSound2 = new sound("./Sounds/box-check.wav")
-                        upgradeSound2.play()
-                    } else {
-                        upgradeSound.play()
-                    }
+                    upgradeSound.play()
                     // remove cookies for upgrade, update text
                     cookieClicker.count = cookieClicker.count - p4Cost
                     cookieClicker.p4Count = cookieClicker.p4Count + 1
@@ -488,12 +464,7 @@ var cookieClicker = {
                     modals.upgradeModal.style.display = "block";
                 } else {
                     // Play Sound 
-                    if (upgradeSound.sound.currentTime > 0) {
-                        var upgradeSound2 = new sound("./Sounds/box-check.wav")
-                        upgradeSound2.play()
-                    } else {
-                        upgradeSound.play()
-                    }
+                    upgradeSound.play()
                     // remove cookies for upgrade, update text
                     cookieClicker.count = cookieClicker.count - p5Cost
                     cookieClicker.p5Count = cookieClicker.p5Count + 1
@@ -545,7 +516,7 @@ function statTracker() {
             }, 8000);
         } 
         // Progress 2
-        if(cookieClicker.total >= 1000 && cookieClicker.progress[1] == true) {
+        if (cookieClicker.total >= 1000 && cookieClicker.progress[1] == true) {
             progSound.play()
             modals.pmContent.textContent = modals.prog2;
             modals.pmTitle.textContent = modals.prog2Title;
@@ -556,7 +527,7 @@ function statTracker() {
             }, 8000);
         }
         // Progress 3
-        if(cookieClicker.total >= 10000 && cookieClicker.progress[2] == true){
+        if (cookieClicker.total >= 10000 && cookieClicker.progress[2] == true){
             progSound.play()
             modals.pmContent.textContent = modals.prog3;
             modals.pmTitle.textContent = modals.prog3Title;
@@ -567,7 +538,7 @@ function statTracker() {
             }, 8000);
         }
         // Progress 4
-        if(cookieClicker.total >= 100000 && cookieClicker.progress[3] == true){
+        if (cookieClicker.total >= 100000 && cookieClicker.progress[3] == true){
             progSound.play()
             modals.pmContent.textContent = modals.prog4;
             modals.pmTitle.textContent = modals.prog4Title;
@@ -578,7 +549,7 @@ function statTracker() {
             }, 8000);
         }
         // Progress 5
-        if(cookieClicker.total >= 1000000 && cookieClicker.progress[4] == true){
+        if (cookieClicker.total >= 1000000 && cookieClicker.progress[4] == true){
             progSound.play()
             modals.pmContent.textContent = modals.prog5;
             modals.pmTitle.textContent = modals.prog5Title;
@@ -589,7 +560,7 @@ function statTracker() {
             }, 8000);
         }
         // Progress 6
-        if(cookieClicker.total >= 10000000 && cookieClicker.progress[5] == true){
+        if (cookieClicker.total >= 10000000 && cookieClicker.progress[5] == true){
             winSound.play()
             modals.pmContent.textContent = modals.prog6;
             modals.pmTitle.textContent = modals.prog6Title;

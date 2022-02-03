@@ -143,7 +143,13 @@ h1 {
     font-size: 0.8em;
     margin-left: 2em;
 }
-
+    /* Augments */
+#augments {
+    display: none;
+}
+#augments li {
+    list-style: none;
+}
     /* Upgrades */
 .upgrade-icon {
     height: 15px;
