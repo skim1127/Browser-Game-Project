@@ -58,6 +58,7 @@ var modals = {
 }
 
 // add sound function
+// sounds from https://mixkit.co/
 function sound(src) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
@@ -77,6 +78,7 @@ function sound(src) {
 
 // Cookie clicker object
 var cookieClicker = {
+    // get html tags
     cookie: document.getElementById("cc-img"),
     countContainer: document.getElementById("cookies-container"),
     totalContainer: document.getElementById("total-container"),
@@ -105,7 +107,7 @@ var cookieClicker = {
 
     main() {
         var bakery = document.getElementById("bakery-name")
-        // click sounds
+        // many click sounds
         var clickSound = new sound("./Sounds/pop.wav")
         var clickSound2 = new sound("./Sounds/pop.wav")
         var clickSound3 = new sound("./Sounds/pop.wav")
@@ -132,7 +134,7 @@ var cookieClicker = {
         // cookie image event listener
         function cookieImg() {
 
-            // click function
+            // cookie click event listener
             cookieClicker.cookie.addEventListener("click", function(){
                 // brute forcing sound overlaps
                 if (clickSound2.sound.currentTime == 0.291655 || clickSound2.sound.currentTime == 0) {
@@ -385,7 +387,7 @@ var cookieClicker = {
             var p4Text = document.getElementById("row4-text")
             
             // set base upgrade cost
-            var p4Cost = 1 //change value later
+            var p4Cost = 6500 //change value later
             // set text for upgrade cost
             p4UpgradeDesc.textContent = "-" + p4Cost
 
